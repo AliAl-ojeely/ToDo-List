@@ -2,6 +2,7 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
+#include "clsWorkListScreen.h"
 
 using namespace std;
 
@@ -31,7 +32,8 @@ private:
 
     static void _ShowAllWorksScreen()
     {
-        cout << "\nWork List Screen will be here...\n";
+        /*cout << "\nWork List Screen will be here...\n";*/
+        clsWorkListScreen::ShowWorkList();
         
 
     }
