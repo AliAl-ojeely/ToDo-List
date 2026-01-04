@@ -47,7 +47,7 @@ private:
 				cout << "| " << setw(wDesc) << left << Segment;
 
 				cout << "| " << setw(wDate) << left << Work.GetCreationDateTime();
-				cout << "| " << setw(wStatus) << left << (Work.WorkDone ? "Yes" : "No");
+				cout << "| " << setw(wStatus) << left << (Work.WorkStatus ? "Yes" : "No");
 			}
 
 			else

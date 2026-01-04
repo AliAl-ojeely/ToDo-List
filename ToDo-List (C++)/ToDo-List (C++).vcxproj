@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="clsDeleteWorkScreen.cpp" />
     <ClCompile Include="ToDo-List (C++).cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsAddNewWork.h" />
     <ClInclude Include="clsDate.h" />
+    <ClInclude Include="clsDeleteWorkScreen.h" />
     <ClInclude Include="clsInputValidate.h" />
     <ClInclude Include="clsMainScreen.h" />
     <ClInclude Include="clsPeriod.h" />

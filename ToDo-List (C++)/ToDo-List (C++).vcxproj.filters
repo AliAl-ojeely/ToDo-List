@@ -18,6 +18,9 @@
     <ClCompile Include="ToDo-List (C++).cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="clsDeleteWorkScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsScreen.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clsAddNewWork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsDeleteWorkScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

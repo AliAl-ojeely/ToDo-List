@@ -21,7 +21,7 @@ private:
 	string _WorkName;
 	string _WorkDescription;
 	string _CreationDateTime;
-	bool _WorkDone = 0;
+	bool _WorkStatus = 0;
 
 	static clsWork _ConvertLineToWorkObject(string Line, string Seperator = "#//#")
 	{
@@ -34,7 +34,7 @@ private:
 			vWorkData[1],                 // WorkName
 			vWorkData[2],                 // WorkDescription
 			vWorkData[3],                 // CreationDateTime
-			stoi(vWorkData[4])			  // WorkDone
+			stoi(vWorkData[4])			  // WorkStatus
 		);
 	}
 
@@ -46,7 +46,7 @@ private:
 		stWorkRecord += Work.WorkName + Seperator;
 		stWorkRecord += Work.WorkDescription + Seperator;
 		stWorkRecord += Work.GetCreationDateTime() + Seperator;
-		stWorkRecord += to_string(Work.WorkDone);
+		stWorkRecord += to_string(Work.WorkStatus);
 
 		return stWorkRecord;
 	}
@@ -148,7 +148,7 @@ public:
 		_WorkName = WorkName;
 		_WorkDescription = WorkDescription;
 		_CreationDateTime = clsDate::GetSystemDateTimeString();
-		_WorkDone = WorkDone;
+		_WorkStatus = WorkDone;
 	}
 
 	clsWork(enMode Mode, string WorkNumber, string WorkName, string WorkDescription,
@@ -159,7 +159,7 @@ public:
 		_WorkName = WorkName;
 		_WorkDescription = WorkDescription;
 		_CreationDateTime = CreationDateTime;
-		_WorkDone = WorkDone;
+		_WorkStatus = WorkDone;
 	}
 
 	bool IsEmpty()
@@ -203,17 +203,17 @@ public:
 
 	__declspec(property (get = GetWorkDescription, put = SetWorkDescription)) string WorkDescription;
 
-	void SetWorkDone(bool WorkDone)
+	void SetWorkStatus(bool WorkStatus)
 	{
-		_WorkDone = WorkDone;
+		_WorkStatus = WorkStatus;
 	}
 
-	bool GetWorkDone()
+	bool GetWorkStatus()
 	{
-		return _WorkDone;
+		return _WorkStatus;
 	}
 
-	__declspec(property (get = GetWorkDone, put = SetWorkDone)) bool WorkDone;
+	__declspec(property (get = GetWorkStatus, put = SetWorkStatus)) bool WorkStatus;
 
 	string GetCreationDateTime()
 	{
@@ -305,6 +305,27 @@ public:
 			break;
 		}
 		}
+	}
+
+	bool Delete()
+	{
+		vector<clsWork> _vWorks;
+		_vWorks = _LoadWorksDataFromFile();
+
+		for (clsWork& W : _vWorks)
+		{
+			if (W.WorkNumber == _WorkNumber)
+			{
+				W._MarkedForDelete = true;
+				break;
+			}
+		}
+
+		_SaveWorksDataToFile(_vWorks);
+
+		*this = _GetEmptyWorkObject();
+
+		return true;
 	}
 };
 

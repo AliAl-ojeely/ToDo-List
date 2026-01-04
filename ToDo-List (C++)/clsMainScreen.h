@@ -4,6 +4,7 @@
 #include "clsInputValidate.h"
 #include "clsWorkListScreen.h"
 #include "clsAddNewWork.h"
+#include "clsDeleteWorkScreen.h"
 
 using namespace std;
 
@@ -45,8 +46,8 @@ private:
 
     static void _ShowDeleteWorkScreen()
     {
-        cout << "\nDelete Work Screen will be here...\n";
-
+        /*cout << "\nDelete Work Screen will be here...\n";*/
+        clsDeleteWorkScreen::ShowDeleteWorkScreen();
     }
 
     static void _ShowUpdateWorkScreen()
