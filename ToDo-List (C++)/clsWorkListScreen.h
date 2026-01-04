@@ -13,9 +13,9 @@ private:
 	{
 		//cout << setw(8) << left << "" << "| " << setw(8) << left << Work.WorkNumber;
 		//cout << "| " << setw(20) << left << Work.WorkName;
-		//cout << "| " << setw(39) << left << Work.WorkDescription;
+		//cout << "| " << setw(40) << left << Work.WorkDescription;
 		//cout << "| " << setw(20) << left << Work.GetCreationDateTime();
-		//cout << "| " << setw(7) << left << Work.WorkDone;
+		//cout << "| " << setw(10) << left << Work.WorkDone;
 		
 		short wID = 8;
 		short wName = 20;

@@ -6,6 +6,7 @@
 #include "clsAddNewWork.h"
 #include "clsDeleteWorkScreen.h"
 #include "clsFindWorkScreen.h"
+#include "clsWorkRegisterScreen.h"
 
 using namespace std;
 
@@ -65,7 +66,8 @@ private:
 
     static void _ShowWorkRegister()
     {
-        cout << "\n Work Register Screen will be here...\n";  
+        /*cout << "\n Work Register Screen will be here...\n"; */
+        clsWorkRegisterScreen::ShowWorkRegisterScreen();
     }
 
 

@@ -4,6 +4,7 @@
 #include "clsWork.h"
 #include "clsInputValidate.h"
 #include "clsScreen.h"
+#include "clsWorkRegisterScreen.h"
 
 
 class clsAddNewWork : protected clsScreen

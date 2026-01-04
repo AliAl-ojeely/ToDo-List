@@ -51,6 +51,31 @@ private:
 		return stWorkRecord;
 	}
 
+	struct stWorkRegisterRecord;
+	static stWorkRegisterRecord _ConvertWorkRegisterLineToRecord(string Line, string Seperator = "#//#")
+	{
+		stWorkRegisterRecord WorkRegisterRecord;
+
+		vector<string> WorkRegisterDataLine = clsString::Split(Line, Seperator);
+		WorkRegisterRecord.WorkDate = WorkRegisterDataLine[0];
+		WorkRegisterRecord.WorkNumber = WorkRegisterDataLine[1];
+		WorkRegisterRecord.WorkName = WorkRegisterDataLine[2];
+		WorkRegisterRecord.WorkStatus = stoi(WorkRegisterDataLine[3]);
+
+		return WorkRegisterRecord;
+	}
+
+	string _PrepareWorkRecord(string Seperator = "#//#")
+	{
+		string WorkRecord = "";
+		WorkRecord += clsDate::GetSystemDateTimeString() + Seperator;
+		WorkRecord += WorkNumber + Seperator;
+		WorkRecord += WorkName + Seperator;
+		WorkRecord += to_string(WorkStatus);
+
+		return WorkRecord;
+	}
+
 	static clsWork _GetEmptyWorkObject()
 	{
 		return clsWork(enMode::EmptyMode, "", "", "", "", false);
@@ -121,9 +146,27 @@ private:
 		_SaveWorksDataToFile(_vWork);
 	}
 
+
+	void _RegisterWork()
+	{
+		string stDataLine = _PrepareWorkRecord();
+
+		fstream MyFile;
+		MyFile.open("WorkRegister.txt", ios::out | ios::app);
+
+		if (MyFile.is_open())
+		{
+			MyFile << stDataLine << endl;
+
+			MyFile.close();
+		}
+	}
+
 	void _AddNew()
 	{
 		_AddDataLineToFile(_ConvertWorkObjectToLine(*this));
+
+		_RegisterWork();
 	}
 
 	void _AddDataLineToFile(string stDataLine)
@@ -140,6 +183,14 @@ private:
 	}
 
 public:
+
+	struct stWorkRegisterRecord
+	{
+		string WorkDate;
+		string WorkNumber;
+		string WorkName;
+		bool WorkStatus;
+	};
 
 	clsWork(enMode Mode,string WorkNumber, string WorkName, string WorkDescription, bool WorkDone)
 	{
@@ -349,5 +400,32 @@ public:
 
 		return true;
 	}
+
+	static vector <stWorkRegisterRecord> GetWorkRegisterRecord()
+	{
+		vector <stWorkRegisterRecord> vWorkRegisterRecord;
+		fstream MyFile;
+
+		MyFile.open("WorkRegister.txt", ios::in); // read mode
+
+		if (MyFile.is_open())
+		{
+			string Line;
+
+			stWorkRegisterRecord WorkRegisterRecord;
+
+			while (getline(MyFile, Line))
+			{
+				WorkRegisterRecord = _ConvertWorkRegisterLineToRecord(Line);
+				vWorkRegisterRecord.push_back(WorkRegisterRecord);
+			}
+
+			MyFile.close();
+		}
+
+		return vWorkRegisterRecord;
+	}
+
+
 };
 

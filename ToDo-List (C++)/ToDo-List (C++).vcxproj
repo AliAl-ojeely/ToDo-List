@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="clsDeleteWorkScreen.cpp" />
+    <ClCompile Include="clsWorkRegisterScreen.cpp" />
     <ClCompile Include="ToDo-List (C++).cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="clsUtil.h" />
     <ClInclude Include="clsWork.h" />
     <ClInclude Include="clsWorkListScreen.h" />
+    <ClInclude Include="clsWorkRegisterScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
