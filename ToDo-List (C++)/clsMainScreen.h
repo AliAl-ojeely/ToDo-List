@@ -3,6 +3,7 @@
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsWorkListScreen.h"
+#include "clsAddNewWork.h"
 
 using namespace std;
 
@@ -34,43 +35,34 @@ private:
     {
         /*cout << "\nWork List Screen will be here...\n";*/
         clsWorkListScreen::ShowWorkList();
-        
-
     }
 
     static void _ShowAddNewWorkScreen()
     {
-        cout << "\nAdd New Work Screen will be here...\n";
-        
-
+        /*cout << "\nAdd New Work Screen will be here...\n";*/
+        clsAddNewWork::ShowAddNewWorkScreen();
     }
 
     static void _ShowDeleteWorkScreen()
     {
         cout << "\nDelete Work Screen will be here...\n";
-       
 
     }
 
     static void _ShowUpdateWorkScreen()
     {
         cout << "\nUpdate Work Screen will be here...\n";
-        
-
     }
 
     static void _ShowFindWorkScreen()
     {
         cout << "\nFind Work Screen will be here...\n";
-        
-
     }
 
 
     static void _ShowWorkRegister()
     {
-        cout << "\n Work Register Screen will be here...\n";
-        
+        cout << "\n Work Register Screen will be here...\n";  
     }
 
 
@@ -78,59 +70,59 @@ private:
     {
         switch (MainMenuOption)
         {
-        case enMainMenueOptions::eListWorks:
-        {
-            system("cls");
-            _ShowAllWorksScreen();
-            _GoBackToMainMenue();
-            break;
-        }
+            case enMainMenueOptions::eListWorks:
+            {
+                system("cls");
+                _ShowAllWorksScreen();
+                _GoBackToMainMenue();
+                break;
+            }
 
-        case enMainMenueOptions::eAddNewWork:
-        {
-            system("cls");
-            _ShowAddNewWorkScreen();
-            _GoBackToMainMenue();
-            break;
-        }
+            case enMainMenueOptions::eAddNewWork:
+            {
+                system("cls");
+               _ShowAddNewWorkScreen();
+               _GoBackToMainMenue();
+                break;
+            }
 
-        case enMainMenueOptions::eDeleteWork:
-        {
-            system("cls");
-            _ShowDeleteWorkScreen();
-            _GoBackToMainMenue();
-            break;
-        }
+            case enMainMenueOptions::eDeleteWork:
+            {
+                system("cls");
+               _ShowDeleteWorkScreen();
+                _GoBackToMainMenue();
+                break;
+            }
 
-        case enMainMenueOptions::eUpdateWork:
-        {
-            system("cls");
-            _ShowUpdateWorkScreen();
-            _GoBackToMainMenue();
-            break;
-        }
+            case enMainMenueOptions::eUpdateWork:
+            {
+                system("cls");
+                _ShowUpdateWorkScreen();
+                _GoBackToMainMenue();
+                break;
+            }
 
-        case enMainMenueOptions::eFindWork:
-        {
-            system("cls");
-            _ShowFindWorkScreen();
-            _GoBackToMainMenue();
-            break;
-        }
+            case enMainMenueOptions::eFindWork:
+            {
+                system("cls");
+                _ShowFindWorkScreen();
+                _GoBackToMainMenue();
+                break;
+            }
 
-        case enMainMenueOptions::eWorkRegister:
-        {
-            system("cls");
-            _ShowWorkRegister();
-            _GoBackToMainMenue();
-            break;
-        }
+            case enMainMenueOptions::eWorkRegister:
+            {
+                system("cls");
+                _ShowWorkRegister();
+                _GoBackToMainMenue();
+                break;
+            }
 
-        case enMainMenueOptions::eExit:
-        {
-            exit(0);
-            break;
-        }
+            case enMainMenueOptions::eExit:
+            {
+                exit(0);
+                break;
+            }
 
         }
     }

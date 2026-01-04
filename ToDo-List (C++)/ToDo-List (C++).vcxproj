@@ -126,6 +126,7 @@
     <ClCompile Include="ToDo-List (C++).cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clsAddNewWork.h" />
     <ClInclude Include="clsDate.h" />
     <ClInclude Include="clsInputValidate.h" />
     <ClInclude Include="clsMainScreen.h" />
@@ -134,7 +135,6 @@
     <ClInclude Include="clsString.h" />
     <ClInclude Include="clsUtil.h" />
     <ClInclude Include="clsWork.h" />
-    <ClInclude Include="clsWorkManager.h" />
     <ClInclude Include="clsWorkListScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

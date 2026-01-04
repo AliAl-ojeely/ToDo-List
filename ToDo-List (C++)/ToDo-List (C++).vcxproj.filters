@@ -44,10 +44,10 @@
     <ClInclude Include="clsWorkListScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="clsWorkManager.h">
+    <ClInclude Include="clsWork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="clsWork.h">
+    <ClInclude Include="clsAddNewWork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
