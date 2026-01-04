@@ -5,6 +5,7 @@
 #include "clsWorkListScreen.h"
 #include "clsAddNewWork.h"
 #include "clsDeleteWorkScreen.h"
+#include "clsFindWorkScreen.h"
 
 using namespace std;
 
@@ -57,7 +58,8 @@ private:
 
     static void _ShowFindWorkScreen()
     {
-        cout << "\nFind Work Screen will be here...\n";
+        /*cout << "\nFind Work Screen will be here...\n";*/
+        clsFindWorkScreen::ShowFindWorkScreen();
     }
 
 

@@ -56,5 +56,8 @@
     <ClInclude Include="clsDeleteWorkScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="clsFindWorkScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

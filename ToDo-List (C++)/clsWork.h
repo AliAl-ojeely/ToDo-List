@@ -236,7 +236,7 @@ public:
 		return _LoadWorksDataFromFile();
 	}
 
-	static clsWork Find(string WorkNumber1)
+	static clsWork Find(string stWorkNumber)
 	{
 		fstream MyFile;
 		MyFile.open("ToDoList.txt", ios::in); // read mode
@@ -247,7 +247,29 @@ public:
 			while (getline(MyFile, Line))
 			{
 				clsWork Work = _ConvertLineToWorkObject(Line);
-				if (Work.WorkNumber == WorkNumber1)
+				if (Work.WorkNumber == stWorkNumber)
+				{
+					MyFile.close();
+					return Work;
+				}
+			}
+			MyFile.close();
+		}
+		return _GetEmptyWorkObject();
+	}
+
+	static clsWork Find(string stWorkNumber, string stWorkName)
+	{
+		fstream MyFile;
+		MyFile.open("ToDoList.txt", ios::in); // read mode
+
+		if (MyFile.is_open())
+		{
+			string Line;
+			while (getline(MyFile, Line))
+			{
+				clsWork Work = _ConvertLineToWorkObject(Line);
+				if (Work.WorkNumber == stWorkNumber && Work.WorkName == stWorkName)
 				{
 					MyFile.close();
 					return Work;
