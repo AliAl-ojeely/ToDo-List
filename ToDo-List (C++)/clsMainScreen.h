@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsWorkListScreen.h"
@@ -7,6 +8,7 @@
 #include "clsDeleteWorkScreen.h"
 #include "clsFindWorkScreen.h"
 #include "clsWorkRegisterScreen.h"
+#include "clsUpdateMainScreen.h"
 
 using namespace std;
 
@@ -54,7 +56,8 @@ private:
 
     static void _ShowUpdateWorkScreen()
     {
-        cout << "\nUpdate Work Screen will be here...\n";
+        /*cout << "\nUpdate Work Screen will be here...\n";*/
+        clsUpdateMainScreen::ShowUpdateMenue();
     }
 
     static void _ShowFindWorkScreen()

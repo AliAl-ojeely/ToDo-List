@@ -31,7 +31,7 @@ private:
 		cout << "\nWork Name       : " << Work.WorkName;
 		cout << "\nWork Description: " << Work.WorkDescription;
 		cout << "\nWork Date/Time  : " << Work.GetCreationDateTime();
-		cout << "\nWork Status     : " << Work.WorkStatus;
+		cout << "\nWork Status     : " << (Work.WorkStatus ? "Yes" : "No");
 		cout << "\n____________________________________________";
 	}
 

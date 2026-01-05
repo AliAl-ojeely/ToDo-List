@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="clsDeleteWorkScreen.cpp" />
+    <ClCompile Include="clsUpdateMainScreen.cpp" />
     <ClCompile Include="clsWorkRegisterScreen.cpp" />
     <ClCompile Include="ToDo-List (C++).cpp" />
   </ItemGroup>
@@ -137,6 +138,9 @@
     <ClInclude Include="clsPeriod.h" />
     <ClInclude Include="clsScreen.h" />
     <ClInclude Include="clsString.h" />
+    <ClInclude Include="clsUpdateMainScreen.h" />
+    <ClInclude Include="clsUpdateWorkInfoScreen.h" />
+    <ClInclude Include="clsUpdateWorkStatus.h" />
     <ClInclude Include="clsUtil.h" />
     <ClInclude Include="clsWork.h" />
     <ClInclude Include="clsWorkListScreen.h" />
