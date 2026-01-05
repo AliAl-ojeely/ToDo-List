@@ -50,7 +50,8 @@ public:
 
 		if (Answer == 'y' || Answer == 'Y')
 		{
-			Work1.WorkStatus = true;
+
+			Work1.WorkStatus = !Work1.WorkStatus;
 
 			clsWork::enSaveResults SaveResult;
 			SaveResult = Work1.Save();
@@ -68,32 +69,10 @@ public:
 				{
 					cout << "\nError Work Was not Saved beacause it's Empty";
 					break;
+					
 				}
 			}
-		}
 
-		if (Answer == 'n' || Answer == 'n')
-		{
-			Work1.WorkStatus = false;
-
-			clsWork::enSaveResults SaveResult;
-			SaveResult = Work1.Save();
-
-			switch (SaveResult)
-			{
-			case clsWork::enSaveResults::svSucceeded:
-			{
-				cout << "\nWork Updated Successfully :)\n";
-
-				_PrintWork(Work1);
-				break;
-			}
-			case clsWork::enSaveResults::svFaildEmptyObject:
-			{
-				cout << "\nError Work Was not Saved beacause it's Empty";
-				break;
-			}
-			}
 		}
 	}
 
