@@ -1,105 +1,106 @@
-C++ To-Do List System
-A robust, console-based Task Management System built using C++ and Object-Oriented Programming (OOP) principles. This project demonstrates advanced file handling, data formatting, and architectural patterns like Active Record.
+# 📝 C++ To-Do List System with Active Record
 
-Overview
-The To-Do List System allows users to manage their daily tasks efficiently. It supports full CRUD (Create, Read, Update, Delete) operations, storing data persistently in text files. The system features a clean console user interface with dynamic table formatting and transaction logging.
+> **A professional, console-based Task Management System built using C++ and Object-Oriented Programming (OOP). This project demonstrates advanced software architecture patterns, file handling, and dynamic UI rendering.**
 
-Architecture & Design Patterns
-The Active Record Pattern
-This project is built around the Active Record Design Pattern.
+---
 
-Core Class: clsWork
+## 🚀 Project Overview
 
-Concept: The clsWork object is responsible for its own data persistence. It encapsulates both the data (Properties like WorkName, WorkStatus) and the behavior (Methods like Save(), Delete(), Find()).
+The **To-Do List System** is designed to help users manage daily tasks efficiently. Unlike simple procedural programs, this project implements the **Active Record Pattern**, making the code modular, scalable, and easy to maintain. It supports full persistent storage using text files and features a robust "Work Register" log system.
 
-Benefits:
+---
 
-High Cohesion: Logic and data are kept together.
+## 🏗️ Architecture & Design Pattern
 
-Clean Code: The UI layer (Screens) simply calls methods like NewWork.Save(), without worrying about file handling details.
+### 🧠 The Active Record Pattern
+This project strictly follows the **Active Record** architectural pattern. instead of having separate manager classes for data access, the `clsWork` object is responsible for its own data persistence.
 
-Self-Managing Objects: The object knows how to add itself to the database or update its own status.
+**How it works in this project:**
+The object encapsulates both **Data** and **Behavior**.
 
-Key Features
-CRUD Operations:
+```cpp
+// Example of Active Record usage in this project:
 
-Add New Work: Create tasks with auto-generated IDs.
+// 1. Find a record (The object loads itself)
+clsWork Work = clsWork::Find("W001");
 
-List Works: View all tasks in a formatted table with text-wrapping for long descriptions.
+// 2. Modify data (In-memory update)
+Work.WorkName = "Update System Security";
+Work.WorkDone = true;
 
-Update Work: Modify task details or toggle status (Done/Pending).
+// 3. Save (The object knows how to save itself to the file)
+Work.Save(); 
 
-Delete Work: Remove tasks permanently from the file.
-
-Search Functionality: Find specific tasks by ID.
-
-Activity Logging (Work Register): Automatically logs every new task addition into a separate WorkRegister.txt file with a timestamp.
-
-Input Validation: Robust validation using clsInputValidate to ensure data integrity (e.g., valid dates, non-empty strings).
-
-Smart UI:
-
-Dynamic column alignment.
-
-Word-wrapping for long task names and descriptions to fit the console view.
+// 4. Delete (The object knows how to remove itself)
+Work.Delete();
+```
 
 Project Structure
-Based on the solution explorer, the project is organized into modular headers and source files:
+The project is organized into modular Header (.h) and Source (.cpp) files to ensure separation of concerns.
 
-Core & Model
-clsWork.h : The heart of the system (Active Record Model). Handles data and file operations (To-DoList.txt & WorkRegister.txt).
+ToDo-List (C++)/
+│
+├── 📂 Header Files (Logic & Models)
+│   ├── clsWork.h                <-- Core Model (Active Record)
+│   ├── clsUser.h                <-- User Management
+│   ├── clsDate.h                <-- Date & Time Utilities
+│   ├── clsString.h              <-- String Manipulation Lib
+│   ├── clsInputValidate.h       <-- Input Validation Lib
+│   ├── clsScreen.h              <-- Base UI Class
+│   └── clsUtil.h                <-- General Utilities
+│
+├── 🖥️ Header Files (Screens / UI Layer)
+│   ├── clsMainScreen.h          <-- Main Menu Entry
+│   ├── clsWorkListScreen.h      <-- Display Tasks Table
+│   ├── clsAddNewWork.h          <-- Add Task Screen
+│   ├── clsUpdateMainScreen.h    <-- Update Menu
+│   ├── clsDeleteWorkScreen.h    <-- Delete Interface
+│   ├── clsFindWorkScreen.h      <-- Search Interface
+│   └── clsWorkRegisterScreen.h  <-- Activity Log View
+│
+├── 📂 Source Files
+│   └── ToDo-List (C++).cpp      <-- Application Entry Point (main)
+│
+└── 📄 Data Files (Database)
+    ├── To-DoList.txt            <-- Main Data Storage
+    └── WorkRegister.txt         <-- Transaction Log
 
-Screens (UI Layer)
-clsMainScreen.h : The main menu entry point.
+Key Features
+1. Complete CRUD Operations
+Create: Auto-generated Work IDs (e.g., W001, W002).
 
-clsWorkListScreen.h : Displays the formatted table of tasks.
+Read: View all tasks formatted in a dynamic table.
 
-clsAddNewWork.h : Interface for creating new tasks.
+Update: Edit task details or toggle status (Done/Pending).
 
-clsUpdateMainScreen.h : Sub-menu for update operations.
+Delete: Soft or Hard delete capabilities.
 
-clsUpdateWorkInfoScreen.h : Update task details.
+2. Intelligent UI & Formatting
+Dynamic Word Wrapping: Long descriptions are automatically wrapped to the next line without breaking the table layout.
 
-clsUpdateWorkStatusScreen.h : Update task completion status.
+Status Parsing: Converts boolean values (1/0) into human-readable text (Yes/No or Done/Pending).
 
-clsDeleteWorkScreen.h : Interface for deleting tasks.
+3. Work Register (Logging System)
+Every time a new task is added, the system automatically logs the transaction in a separate file for auditing.
 
-clsFindWorkScreen.h : Interface for searching tasks.
+Log File Format (WorkRegister.txt):
 
-clsWorkRegisterScreen.h : Displays the log of added tasks.
+2/1/2026 - 9:30:0#//#W001#//#Network Setup#//#1
+2/1/2026 - 11:0:0#//#W002#//#Database Backup#//#1
+4/1/2026 - 3:14:0#//#W011#//#Formating Windows 10#//#0
 
-Utilities & Libraries
-clsScreen.h : Base class for all screens (headers, standardized UI).
-
-clsDate.h : Handles date/time operations and formatting.
-
-clsString.h : String manipulation (splitting, trimming, etc.).
-
-clsInputValidate.h : Validates user inputs (numbers, ranges, strings).
-
-clsUtil.h : General utility functions.
-
-Data Storage
-The system uses flat text files as a database:
-
-To-DoList.txt: Stores the main tasks.
-
-Format: WorkID#//#Name#//#Description#//#Date#//#Status
-
-WorkRegister.txt: Stores the history log of added tasks.
-
-Format: Date#//#WorkID#//#Name#//#Status
-
-Technologies Used
-Language: C++ (Standard 11/14/17 recommended)
+🛠️ Technologies & Tools
+Language: C++ (Standard 11/14)
 
 IDE: Microsoft Visual Studio
 
-Paradigm: OOP (Inheritance, Encapsulation, Polymorphism)
+Concepts: OOP (Encapsulation, Inheritance), File I/O (fstream), Pointers, Vectors.
 
-Author
+👤 Author
 Ali Nasser Al-Ojeely
 
 Front-End Web Developer & C++ Programmer
 
-Location: Mukalla, Yemen
+📍 Location: Mukalla, Yemen
+
+This project was developed to demonstrate mastery of C++ fundamentals and advanced Architectural Patterns.
