@@ -14,7 +14,7 @@ private:
 	static void _ReadWorkInfo(clsWork& Work)
 	{
 		cout << "\nEnter Work Number: ";
-		Work.WorkNumber = clsInputValidate::ReadString();
+		Work.WorkNumber() = clsInputValidate::ReadString();
 
 		cout << "\nEnter Work Name: ";
 		Work.WorkName = clsInputValidate::ReadString();
@@ -27,7 +27,7 @@ private:
 	{
 		cout << "\nWork Info:";
 		cout << "\n____________________________________________";
-		cout << "\nWork ID         : " << Work.WorkNumber;
+		cout << "\nWork ID         : " << Work.WorkNumber();
 		cout << "\nWork Name       : " << Work.WorkName;
 		cout << "\nWork Description: " << Work.WorkDescription;
 		cout << "\nWork Date/Time  : " << Work.GetCreationDateTime();

@@ -12,7 +12,7 @@ private:
 	{
 		cout << "\nWork Info:";
 		cout << "\n___________________________________________";
-		cout << "\nWork Number      : " << Work.WorkNumber;
+		cout << "\nWork Number      : " << Work.WorkNumber();
 		cout << "\nWork Name        : " << Work.WorkName;
 		cout << "\nWork Description : " << Work.WorkDescription;
 		cout << "\nWork Date/Time   : " << Work.GetCreationDateTime();

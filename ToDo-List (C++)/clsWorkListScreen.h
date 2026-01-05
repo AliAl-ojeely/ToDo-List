@@ -37,7 +37,7 @@ private:
 
 			if (i == 0)
 			{
-				cout << "| " << setw(wID) << left << Work.WorkNumber;
+				cout << "| " << setw(wID) << left << Work.WorkNumber();
 
 				if(Work.WorkName.length() > wName)
 					cout << "| " << setw(wName) << left << (Work.WorkName.substr(0, wName - 3) + "..");

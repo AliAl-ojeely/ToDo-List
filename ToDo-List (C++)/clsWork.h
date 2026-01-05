@@ -42,7 +42,7 @@ private:
 	{
 		string stWorkRecord = "";
 
-		stWorkRecord += Work.WorkNumber + Seperator;
+		stWorkRecord += Work.WorkNumber() + Seperator;
 		stWorkRecord += Work.WorkName + Seperator;
 		stWorkRecord += Work.WorkDescription + Seperator;
 		stWorkRecord += Work.GetCreationDateTime() + Seperator;
@@ -69,7 +69,7 @@ private:
 	{
 		string WorkRecord = "";
 		WorkRecord += clsDate::GetSystemDateTimeString() + Seperator;
-		WorkRecord += WorkNumber + Seperator;
+		WorkRecord += WorkNumber() + Seperator;
 		WorkRecord += WorkName + Seperator;
 		WorkRecord += to_string(WorkStatus);
 
@@ -136,7 +136,7 @@ private:
 
 		for (clsWork& W : _vWork)
 		{
-			if (W.WorkNumber == WorkNumber)
+			if (W.WorkNumber() == WorkNumber())
 			{
 				W = *this;
 				break;
@@ -218,17 +218,11 @@ public:
 		return (_Mode == enMode::EmptyMode);
 	}
 
-	void SetWorkNumber(string WorkNumber)
-	{
-		_WorkNumber = WorkNumber;
-	}
-
-	string GetWorkNumber()
+	// Read only
+	string WorkNumber()
 	{
 		return _WorkNumber;
 	}
-
-	__declspec(property (get = GetWorkNumber, put = SetWorkNumber)) string WorkNumber;
 
 	void SetWorkName(string WorkName)
 	{
@@ -266,6 +260,7 @@ public:
 
 	__declspec(property (get = GetWorkStatus, put = SetWorkStatus)) bool WorkStatus;
 
+	// Read only
 	string GetCreationDateTime()
 	{
 		return _CreationDateTime;
@@ -298,7 +293,7 @@ public:
 			while (getline(MyFile, Line))
 			{
 				clsWork Work = _ConvertLineToWorkObject(Line);
-				if (Work.WorkNumber == stWorkNumber)
+				if (Work.WorkNumber() == stWorkNumber)
 				{
 					MyFile.close();
 					return Work;
@@ -320,7 +315,7 @@ public:
 			while (getline(MyFile, Line))
 			{
 				clsWork Work = _ConvertLineToWorkObject(Line);
-				if (Work.WorkNumber == stWorkNumber && Work.WorkName == stWorkName)
+				if (Work.WorkNumber() == stWorkNumber && Work.WorkName == stWorkName)
 				{
 					MyFile.close();
 					return Work;
@@ -339,7 +334,7 @@ public:
 
 	static clsWork GetAddNewWorkObject(string WorkNumber)
 	{
-		return clsWork(enMode::AddNewMode, "", "", "", false);
+		return clsWork(enMode::AddNewMode, WorkNumber ,"", "", clsDate::GetSystemDateTimeString(), false);
 	}
 
 	enum enSaveResults { svFaildEmptyObject = 0, svSucceeded = 1, svFaildWorkNumberExists = 2 };
@@ -387,7 +382,7 @@ public:
 
 		for (clsWork& W : _vWorks)
 		{
-			if (W.WorkNumber == _WorkNumber)
+			if (W.WorkNumber() == _WorkNumber)
 			{
 				W._MarkedForDelete = true;
 				break;
